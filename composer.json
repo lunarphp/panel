@@ -1,0 +1,29 @@
+{
+    "name": "lunarphp/panel",
+    "description": "Inertia.js admin panel for Lunar",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Lunar\\Panel\\": "src/",
+            "Lunar\\Panel\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "minimum-stability": "dev",
+    "repositories": [],
+    "require": {
+        "lunarphp/core": "self.version",
+        "bacon/bacon-qr-code": "^3.0",
+        "inertiajs/inertia-laravel": "^3.0",
+        "pragmarx/google2fa": "^9.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lunar\\Panel\\PanelServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^2.1.17"
+    }
+}

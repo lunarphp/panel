@@ -1,0 +1,31 @@
+{
+    "name": "@lunarphp/panel",
+    "version": "0.1.1",
+    "type": "module",
+    "description": "Panel layout and page-chrome components for building lunarphp/panel add-on pages.",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lunarphp/lunar.git",
+        "directory": "packages/panel/resources/panel-package"
+    },
+    "main": "index.js",
+    "module": "index.js",
+    "types": "dist/ui.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/ui.d.ts",
+            "default": "./index.js"
+        }
+    },
+    "files": [
+        "index.js",
+        "dist"
+    ],
+    "scripts": {
+        "prepublishOnly": "npm --prefix ../.. run build:types"
+    },
+    "peerDependencies": {
+        "vue": "^3.0.0"
+    }
+}
