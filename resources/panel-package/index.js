@@ -41,6 +41,7 @@ export const Toggle = ui().Toggle;
 export const FieldLabel = ui().FieldLabel;
 export const ColorPicker = ui().ColorPicker;
 export const DatePicker = ui().DatePicker;
+export const RichTextEditor = ui().RichTextEditor;
 
 // Overlays / display
 export const Dialog = ui().Dialog;
@@ -48,8 +49,10 @@ export const Slideout = ui().Slideout;
 export const ConfirmDialog = ui().ConfirmDialog;
 export const Tooltip = ui().Tooltip;
 export const SideCard = ui().SideCard;
+export const StickySidebar = ui().StickySidebar;
 export const Section = ui().Section;
 export const Tabs = ui().Tabs;
+export const Flag = ui().Flag;
 export const ValuePreviewChip = ui().ValuePreviewChip;
 
 // Discounts
@@ -61,6 +64,8 @@ export const UsageMeter = ui().UsageMeter;
 export const DraftActions = ui().DraftActions;
 export const DraftConflictDialog = ui().DraftConflictDialog;
 export const useEditDraft = (...args) => ui().useEditDraft(...args);
+export const useFormSlice = (...args) => ui().useFormSlice(...args);
+export const usePanelForm = (...args) => ui().usePanelForm(...args);
 export const http = {
     get: (...args) => ui().http.get(...args),
     post: (...args) => ui().http.post(...args),

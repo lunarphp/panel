@@ -28,6 +28,7 @@ import ProductPickerDialog, { type ProductOption } from '../../components/Produc
 import Section from '../../components/Section.vue';
 import Select from '../../components/Select.vue';
 import SideCard from '../../components/SideCard.vue';
+import StickySidebar from '../../components/StickySidebar.vue';
 import StatusBadge from '../../components/StatusBadge.vue';
 import StatusSegmentedControl from '../../components/StatusSegmentedControl.vue';
 import TagsInput from '../../components/TagsInput.vue';
@@ -91,7 +92,6 @@ const props = defineProps<{
         stock: { aggregate: StockAggregate; levels: StockLevelRow[] };
         urls: { pricesStore: string; stockAdjust: string };
     } | null;
-    variantValues: Record<string, unknown>;
     variantAttributeGroups: AttributeGroup[];
     currencies: CurrencyOption[];
     customerGroups: { id: number; name: string }[];
@@ -102,9 +102,7 @@ const props = defineProps<{
     mediaGroups: MediaGroup[];
     productUrls: UrlRow[];
     attributeGroups: AttributeGroup[];
-    attributeValues: Record<string, unknown>;
     availability: { channels: AvailabilityRow[]; customer_groups: AvailabilityRow[] };
-    availabilityValues: Record<string, unknown>;
     brandOptions: { value: number; label: string }[];
     typeOptions: { value: number; label: string }[];
     collections: CollectionOption[];
@@ -153,9 +151,8 @@ const draftForm = useEditDraft({
         // Mapped attribute values ride the same draft under attribute:{handle}
         // keys; availability rows under channel:{id} / customer_group:{id};
         // on the simple shape the sole variant's fields under variant:{field}.
-        ...props.attributeValues,
-        ...props.availabilityValues,
-        ...props.variantValues,
+        // All three are form slices, seeded from the shared formSliceValues
+        // prop by useEditDraft.
     },
     draft: props.draft,
     urls: { draft: props.urls.draft, commit: props.urls.draftCommit },
@@ -688,7 +685,7 @@ const timelineEvents = computed(() =>
 
                     <!-- Sidebar -->
                     <aside>
-                        <div class="lg:sticky lg:top-[60px] flex flex-col gap-4">
+                        <StickySidebar class="flex flex-col gap-4">
                             <PageZone region="sidebar" position="before" :product="product" />
 
                             <SideCard :title="t('products.side_status')">
@@ -744,7 +741,7 @@ const timelineEvents = computed(() =>
                             </SideCard>
 
                             <PageZone region="sidebar" position="after" :product="product" />
-                        </div>
+                        </StickySidebar>
                     </aside>
                 </div>
             </div>
